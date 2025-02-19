@@ -2,6 +2,8 @@
 
 A simple FastAPI application that serves a Hello World endpoint. This project is set up with modern Python tooling including uv package manager, pytest for testing, and ruff for linting.
 
+See all the [prompts](./PROMPT.md)
+
 ## Requirements
 
 - Python 3.13+
@@ -11,25 +13,30 @@ A simple FastAPI application that serves a Hello World endpoint. This project is
 ## Local Development
 
 1. Install uv if you haven't already:
+
 ```bash
 pip install uv
 ```
 
-2. Install dependencies:
+2. Install dependencies and activate it:
+
 ```bash
 uv pip install .[dev]
+. .venv/bin/activate
 ```
 
 3. Run the development server:
+
 ```bash
 uvicorn app.main:app --reload
 ```
 
-The API will be available at http://localhost:8000
+The API will be available at <http://127.0.0.1:8000>
 
 ## Testing
 
 Run tests with pytest:
+
 ```bash
 pytest
 ```
@@ -37,6 +44,7 @@ pytest
 ## Linting
 
 This project uses ruff for linting and formatting. Run:
+
 ```bash
 ruff check .
 ruff format .
@@ -45,11 +53,13 @@ ruff format .
 ## Docker
 
 Build the container:
+
 ```bash
 docker build -t fastapi-hello-world .
 ```
 
 Run the container:
+
 ```bash
 docker run -p 8000:8000 fastapi-hello-world
 ```
@@ -78,6 +88,7 @@ This project is configured to deploy to Digital Ocean App Platform. The deployme
 Returns a Hello World message
 
 Response:
+
 ```json
 {
     "message": "Hello, World!"
