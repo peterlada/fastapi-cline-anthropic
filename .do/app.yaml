@@ -7,7 +7,7 @@ services:
     github:
       branch: main
       deploy_on_push: true
-      repo: owner/fastapi-hello-world  # Note: Update this with your actual GitHub repository
+      repo: peterlada/fastapi-hello-world
     health_check:
       http_path: /
     instance_count: 1
