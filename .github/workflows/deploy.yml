@@ -1,0 +1,25 @@
+name: Deploy to Digital Ocean App Platform
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Deploy to App Platform
+        run: |
+          # Create app spec if it doesn't exist
+          doctl apps create --spec .do/app.yaml || true
+          
+          # Update the app with latest changes
+          doctl apps update $(doctl apps list --format ID --no-header) --spec .do/app.yaml
